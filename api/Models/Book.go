@@ -1,7 +1,7 @@
 package Models
 
 type Book struct {
-	author   string `json:"author"`
-	abstract string `json:"abstract"`
-	title    string `json:"title"`
+	Author   string `json:"author"`
+	Abstract string `json:"abstract"`
+	Title    string `json:"title"`
 }

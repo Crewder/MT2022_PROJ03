@@ -1,64 +1,31 @@
 package main
 
 import (
-	"bytes"
-	"encoding/json"
-	"github.com/elastic/go-elasticsearch/v8"
-	"io"
-	"log"
+	"github.com/MT2022_PROJ03/Database"
+	"github.com/MT2022_PROJ03/Router"
+	_ "github.com/elastic/go-elasticsearch/v8"
+	"github.com/gin-gonic/gin"
 	_ "net/http"
 )
 
 func main() {
-	es, _ := elasticsearch.NewDefaultClient()
+	setup()
+}
 
-	// envoie sur le port 9200 l'index
-	// res, err := es.Index(
-	//	"vroum",                                  // Index name
-	//	strings.NewReader(`{"title" : "Test"}`), // Document body
-	//	es.Index.WithDocumentID("1"),            // Document ID
-	//	es.Index.WithRefresh("true"),            // Refresh
-	//)
-
-	// GET
-	// res, err := es.Get(
-	// 	"vroum",
-	// 	"1",
-	// )
-	// Perform the search request.
-
-	var buf bytes.Buffer
-	var key = "abstract"
-	var search = "VROUM"
-
-	query := map[string]interface{}{
-		"query": map[string]interface{}{
-			"match": map[string]interface{}{
-				key: search,
-			},
-		},
-	}
-
-	if err := json.NewEncoder(&buf).Encode(query); err != nil {
-		log.Fatalf("Error encoding query: %s", err)
-	}
-
-	res, err := es.Search(
-		es.Search.WithBody(&buf),
-		es.Search.WithTrackTotalHits(true),
-		es.Search.WithPretty(),
-		es.Search.WithAnalyzer(search),
-	)
+func setup() *gin.Engine {
+	_, err := Database.GetESClient()
 
 	if err != nil {
-		log.Fatalf("ERROR: %s", err)
+		return nil
 	}
-	defer func(Body io.ReadCloser) {
-		err := Body.Close()
-		if err != nil {
-		}
 
-	}(res.Body)
-	log.Println(res)
+	r := gin.Default()
+	Router.Setup(r)
 
+	err = r.Run(":8080")
+
+	if err != nil {
+		return nil
+	}
+	return r
 }
