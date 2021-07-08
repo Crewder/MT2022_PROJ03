@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/MT2022_PROJ03/Database"
-	"github.com/MT2022_PROJ03/Router"
+	"MT2022_PROJ03/api/Database"
+	"MT2022_PROJ03/api/Router"
 	"github.com/gin-gonic/gin"
 	"log"
 )

@@ -1,7 +1,7 @@
 package Router
 
 import (
-	"github.com/MT2022_PROJ03/Controllers"
+	"MT2022_PROJ03/api/Controllers"
 	"github.com/gin-gonic/gin"
 )
 

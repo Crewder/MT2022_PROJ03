@@ -1,11 +1,11 @@
 package Controllers
 
 import (
+	"MT2022_PROJ03/api/Database"
+	"MT2022_PROJ03/api/Helpers"
+	"MT2022_PROJ03/api/Models"
 	"bytes"
 	"encoding/json"
-	"github.com/MT2022_PROJ03/Database"
-	"github.com/MT2022_PROJ03/Helpers"
-	"github.com/MT2022_PROJ03/Models"
 	"github.com/gin-gonic/gin"
 	"log"
 	"strings"

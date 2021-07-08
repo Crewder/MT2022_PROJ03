@@ -1,6 +1,6 @@
 package Helpers
 
-import "github.com/MT2022_PROJ03/Models"
+import "MT2022_PROJ03/api/Models"
 
 func SearchQuery(field string, value string) map[string]interface{} {
 
