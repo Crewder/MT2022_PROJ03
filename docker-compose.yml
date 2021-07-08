@@ -12,6 +12,7 @@ services:
       - ./api:/go/src/github.com/blyndusk/repo-template/api
     networks:
       - main
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.13.2
     container_name: elasticsearch
@@ -30,6 +31,15 @@ services:
       - 9200:9200
     networks:
       - main
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.13.2
+    ports: ['5601:5601']
+    links: ['elasticsearch']
+    depends_on: ['elasticsearch']
+    networks:
+      - main
+
 volumes:
   elasticsearch:
 
