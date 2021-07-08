@@ -6,7 +6,7 @@ FROM golang:alpine
 ENV GO111MODULE=on
 
 # Set the current working with go absolute path
-WORKDIR /go/src/github.com/MT2022_PROJ03/api
+WORKDIR /go/src/github.com/Crewder/MT2022_PROJ03/api
 
 # ----- INSTALL -----
 
