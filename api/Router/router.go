@@ -14,4 +14,6 @@ func bookRoute(r *gin.Engine) {
 	r.GET("/books/:id", Controllers.GetBook)
 	r.POST("/books", Controllers.CreateBook)
 	r.GET("/search/:value", Controllers.Search)
+	r.POST("/books/:id", Controllers.UpdateBook)
+	r.DELETE("/books/:id", Controllers.DeleteBook)
 }
