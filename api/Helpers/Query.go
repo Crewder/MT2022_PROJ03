@@ -1,5 +1,7 @@
 package Helpers
 
+import "github.com/MT2022_PROJ03/Models"
+
 func SearchQuery(field string, value string) map[string]interface{} {
 
 	query := map[string]interface{}{
@@ -26,10 +28,13 @@ func MultiSearchQuery(field []string, value string) map[string]interface{} {
 	return query
 }
 
-func UpdateQuery(key string, value string) map[string]interface{} {
+func UpdateQuery(input Models.Book) map[string]interface{} {
+
 	query := map[string]interface{}{
 		"doc": map[string]interface{}{
-			key: value,
+			"Abstract": input.Abstract,
+			"Title":    input.Title,
+			"Author":   input.Author,
 		},
 	}
 	return query

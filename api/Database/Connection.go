@@ -5,16 +5,13 @@ import (
 	"log"
 )
 
+var esClient *elastic.Client
+
 func Init() {
-	// config -> .env
-	// elastic.Newclient(config)
+	esClient, _ = elastic.NewDefaultClient()
+	log.Println(esClient.Info())
 }
 
-func GetESClient() (*elastic.Client, error) {
-	client, err := elastic.NewDefaultClient()
-
-	if err != nil {
-		log.Fatal("Error creating the client: %s", err)
-	}
-	return client, err
+func GetESClient() *elastic.Client {
+	return esClient
 }
