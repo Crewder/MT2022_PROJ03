@@ -3,9 +3,8 @@ package main
 import (
 	"github.com/MT2022_PROJ03/Database"
 	"github.com/MT2022_PROJ03/Router"
-	_ "github.com/elastic/go-elasticsearch/v8"
 	"github.com/gin-gonic/gin"
-	_ "net/http"
+	"log"
 )
 
 func main() {
